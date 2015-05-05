@@ -1,0 +1,21 @@
+[
+	{ "keys": ["f5"], "command": "build", "args": {"variant": "Run"} },
+
+	{ "keys": ["f12"], "command": "code_mark" },
+	{ "keys": ["alt+f12"], "command": "code_mark_set" },
+
+	{ "keys": ["alt+`"], "command": "git_custom" },
+	{ "keys": ["f1"], "command": "git_log_cur_sel" },
+	{ "keys": ["alt+f1"], "command": "git_log_multi_lines" },
+	{ "keys": ["shift+f1"], "command": "git_graph" },
+	{ "keys": ["ctrl+f1"], "command": "git_graph_all" },
+	{ "keys": ["f9"], "command": "git_diff_all" },
+	{ "keys": ["alt+f9"], "command": "git_diff_commit" },
+	{ "keys": ["ctrl+f9"], "command": "git_log_all" },
+	{ "keys": ["f8"], "command": "git_add_choice" },
+	{ "keys": ["ctrl+f8"], "command": "git_commit" },
+	{ "keys": ["ctrl+shift+f8"], "command": "git_commit_amend" },
+	{ "keys": ["f6"], "command": "git_fetch" },
+	{ "keys": ["ctrl+f6"], "command": "git_pull_rebase" },
+	{ "keys": ["ctrl+shift+f6"], "command": "git_push" }
+]
