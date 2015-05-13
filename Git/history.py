@@ -100,7 +100,8 @@ class GitLogMultiCommand(GitLog):
 
 class GitLogMultiTextCommand(GitTextCommand):
     def get_working_dir(self):
-        return os.path.realpath(os.path.dirname(self.view.settings().get("git_file_path")))
+        path = self.view.settings().get("git_file_path")
+        return os.path.realpath(os.path.dirname(path)) if path else None 
     def get_file_name(self):
         return os.path.basename(self.view.settings().get("git_file_path"))
     def is_enabled(self):
