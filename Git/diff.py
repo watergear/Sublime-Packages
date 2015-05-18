@@ -31,9 +31,11 @@ class GitDiff (object):
         else:
             view = self.scratch(result, title="Git Diff")
 
+        lines_files = view.find_all(r'^[-+]{3} .*') # Sim added
         lines_inserted = view.find_all(r'^\+[^+]{2} ')
         lines_deleted = view.find_all(r'^-[^-]{2} ')
 
+        view.add_regions("files", lines_files, "markup.changed.diff", "dot") # Sim added
         view.add_regions("inserted", lines_inserted, "markup.inserted.diff", "dot", sublime.HIDDEN)
         view.add_regions("deleted", lines_deleted, "markup.deleted.diff", "dot", sublime.HIDDEN)
 
@@ -52,6 +54,9 @@ class GitDiffCommit (object):
             self.panel("No output")
             return
         view = self.scratch(result, title="Git Diff")
+
+        lines_files = view.find_all(r'^[-+]{3} .*') # Sim added
+        view.add_regions("files", lines_files, "markup.changed.diff", "dot") # Sim added
 
         view.settings().set("git_root_dir", git_root(self.get_working_dir())) # Sim added
 
