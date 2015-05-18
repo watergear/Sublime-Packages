@@ -22,6 +22,7 @@ class GitDiff (object):
                          self.diff_done)
 
     def diff_done(self, result):
+        workdir = git_root(self.get_working_dir()) # Sim add
         if not result.strip():
             self.panel("No output")
             return
@@ -41,7 +42,8 @@ class GitDiff (object):
 
         # Store the git root directory in the view so we can resolve relative paths
         # when the user wants to navigate to the source file.
-        view.settings().set("git_root_dir", git_root(self.get_working_dir()))
+        #view.settings().set("git_root_dir", git_root(self.get_working_dir()))
+        view.settings().set("git_root_dir", workdir) # Sim modify
 
 
 class GitDiffCommit (object):
@@ -50,6 +52,7 @@ class GitDiffCommit (object):
             self.diff_done)
 
     def diff_done(self, result):
+        workdir = git_root(self.get_working_dir()) # Sim add
         if not result.strip():
             self.panel("No output")
             return
@@ -58,7 +61,7 @@ class GitDiffCommit (object):
         lines_files = view.find_all(r'^[-+]{3} .*') # Sim added
         view.add_regions("files", lines_files, "markup.changed.diff", "dot") # Sim added
 
-        view.settings().set("git_root_dir", git_root(self.get_working_dir())) # Sim added
+        view.settings().set("git_root_dir", workdir) # Sim added
 
 
 class GitDiffCommand(GitDiff, GitTextCommand):
