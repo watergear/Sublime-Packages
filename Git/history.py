@@ -176,8 +176,9 @@ class GitGraph(object):
         )
 
     def log_done(self, result):
+        workdir = self.get_working_dir() + "\\" + self.get_file_name() # Sim added
         view = self.scratch(result, title="Git Log Graph", syntax=plugin_file("syntax/Git Graph.tmLanguage"))
-        view.settings().set("git_file_path", self.get_working_dir() + "\\" + self.get_file_name()) # Sim added
+        view.settings().set("git_file_path", workdir) # Sim added
 
 
 class GitGraphCommand(GitGraph, GitTextCommand):
