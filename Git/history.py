@@ -66,9 +66,6 @@ class GitLog(object):
         if 0 > picked < len(self.results):
             return
         item = self.results[picked]
-        #fw = open(r'D:\a.txt', 'w')
-        #fw.write(item[1])
-        #fw.close()
         # the commit hash is the first thing on the second line
         self.log_result(item[1].split(' ')[0])
 
@@ -81,8 +78,9 @@ class GitLog(object):
             self.details_done)
 
     def details_done(self, result):
+        workdir = git_root(self.get_working_dir()) # Sim added, support goto commit diff without open folder
         view = self.scratch(result, title="Git Commit Details", syntax=plugin_file("syntax/Git Commit Message.tmLanguage"))
-        view.settings().set("git_root_dir", git_root(self.get_working_dir())) # Sim added
+        view.settings().set("git_root_dir", workdir) # Sim added, support goto commit diff without open folder
 
 
 class GitLogCommand(GitLog, GitTextCommand):
@@ -92,7 +90,7 @@ class GitLogCommand(GitLog, GitTextCommand):
 class GitLogAllCommand(GitLog, GitWindowCommand):
     pass
 
-# Sim code follow
+# Sim code begin
 class GitLogMultiCommand(GitLog):
     def log_results(self, refs):
         for ref in refs:
@@ -128,7 +126,7 @@ class GitLogMultiLinesCommand(GitLogMultiCommand, GitLogMultiTextCommand):
             if mm:
                 refs.append(mm.group(1))
         return self.log_results(refs)
-# Sim code above
+# Sim code end
 
 class GitShow(object):
     def run(self, edit=None):
@@ -171,14 +169,14 @@ class GitGraph(object):
     def run(self, edit=None):
         filename = self.get_file_name()
         self.run_command(
-            ['git', 'log', '--graph', '--all', '--pretty=%h -%d (%cr) (%ci) <%an> %s', '--abbrev-commit', '--no-color', '--decorate', '--date=relative', '--follow' if filename else None, '--', filename],
+            ['git', 'log', '--all', '--graph', '--pretty=%h -%d (%cr) (%ci) <%an> %s', '--abbrev-commit', '--no-color', '--decorate', '--date=relative', '--follow' if filename else None, '--', filename],
             self.log_done
         )
 
     def log_done(self, result):
-        workdir = self.get_working_dir() + "\\" + self.get_file_name() # Sim added
+        workdir = self.get_working_dir() + "\\" + self.get_file_name() #Sim added, support goto commit without open folder
         view = self.scratch(result, title="Git Log Graph", syntax=plugin_file("syntax/Git Graph.tmLanguage"))
-        view.settings().set("git_file_path", workdir) # Sim added
+        view.settings().set("git_file_path", workdir) #Sim added, support goto commit without open folder
 
 
 class GitGraphCommand(GitGraph, GitTextCommand):
