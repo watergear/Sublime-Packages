@@ -10,6 +10,7 @@
 	{ "keys": ["alt+f1"], "command": "git_log_multi_lines" },
 	{ "keys": ["shift+f1"], "command": "git_graph" },
 	{ "keys": ["ctrl+f1"], "command": "git_graph_all" },
+	{ "keys": ["ctrl+shift+f1"], "command": "git_log_block" },	
 
 	{ "keys": ["f9"], "command": "git_diff_all" },
 	{ "keys": ["shift+f9"], "command": "git_diff" },
