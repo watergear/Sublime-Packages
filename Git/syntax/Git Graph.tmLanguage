@@ -53,7 +53,8 @@
 			<key>comment</key>
 			<string>lines with no commit details</string>
 			<key>match</key>
-			<string>^\|[\|_\/\\ ]+?$</string>
+			<string>^\|[\|_\/\\ ]+
+?$</string>
 			<key>name</key>
 			<string>comment.git-graph</string>
 		</dict>
@@ -75,7 +76,8 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>Merge branch '(.*?)' of .*??$</string>
+			<string>Merge branch '(.*?)' of .*?
+?$</string>
 			<key>name</key>
 			<string>comment.git-graph</string>
 		</dict>
