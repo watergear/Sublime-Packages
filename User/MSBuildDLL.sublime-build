@@ -1,5 +1,5 @@
 { 
-      "cmd": ["CL", "/LD", "/Fo${file_base_name}", "/O2", "${file}"],   
+      "cmd": ["CL", "/LD", "/Fo${file_base_name}", "/O2", "/EHsc", "${file}"],   
       "file_regex": "^(..[^:]*):([0-9]cl+):?([0-9]+)?:? (.*)$",  
       "working_dir": "${file_path}",  
       "selector": "source.c, source.c++",  
