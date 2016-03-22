@@ -4,6 +4,8 @@
 	{ "keys": ["f12"], "command": "code_mark" },
 	{ "keys": ["alt+f12"], "command": "code_mark_set" },
 
+	{ "keys": ["ctrl+shift+r"], "command": "reverse_select_text" },
+
 	{ "keys": ["alt+`"], "command": "git_custom" },
 
 	{ "keys": ["f1"], "command": "git_log_cur_sel" },
