@@ -2,6 +2,7 @@
 	{ "keys": ["alt+f5"], "command": "build", "args": {"variant": "Run"} },
 
 	{ "keys": ["f12"], "command": "code_mark" },
+	{ "keys": ["ctrl+f12"], "command": "code_mark_modify" },
 	{ "keys": ["alt+f12"], "command": "code_mark_set" },
 
 	{ "keys": ["ctrl+shift+r"], "command": "reverse_select_text" },

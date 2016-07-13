@@ -8,7 +8,7 @@ CodeMarkContents = "CodeMark"
 EndLine = '\n'
 
 class CodeMarkCommand(sublime_plugin.TextCommand):
-    def run(self, edit):
+    def add_code_mark(self, edit, modifycode=False):
         CodeMarkBegin = ' '.join(["///---"+Author, DateTime, CodeMarkContents])
         CodeMarkEnd = ' '.join(["///---END", CodeMarkContents])
         view = self.view
@@ -20,7 +20,26 @@ class CodeMarkCommand(sublime_plugin.TextCommand):
                 view.insert(edit, s.begin(), prefix + CodeMarkBegin)
             else:
                 view.insert(edit, s.end(), prefix + CodeMarkEnd + EndLine)
+
+                if modifycode:
+                    lastline = True
+                    for textline in reversed(text.split('\n')):
+                        if not textline and lastline:
+                            lastline = False
+                            continue
+                        lastline = False
+                        mmline = re.search(r'^(\s*)(.*)', textline)
+                        textlinedup = mmline.group(1) + '//' + mmline.group(2) if mmline else '//' + textline
+                        view.insert(edit, s.begin(), textlinedup + EndLine)
+
                 view.insert(edit, s.begin(), prefix + CodeMarkBegin + EndLine)
+
+    def run(self, edit):
+        return self.add_code_mark(edit)
+
+class CodeMarkModifyCommand(CodeMarkCommand):
+    def run(self, edit):
+        return self.add_code_mark(edit, modifycode=True)
 
 class CodeMarkSetCommand(sublime_plugin.TextCommand):
     def run(self, edit):
