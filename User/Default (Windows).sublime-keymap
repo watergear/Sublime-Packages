@@ -1,4 +1,5 @@
 [
+	{ "keys": ["ctrl+alt+p"], "command": "prompt_select_workspace" },
 	{ "keys": ["alt+f5"], "command": "build", "args": {"variant": "Run"} },
 
 	{ "keys": ["f12"], "command": "code_mark" },
@@ -9,11 +10,11 @@
 
 	{ "keys": ["alt+`"], "command": "git_custom" },
 
-	{ "keys": ["f1"], "command": "git_log_cur_sel" },
-	{ "keys": ["alt+f1"], "command": "git_log_multi_lines" },
+	{ "keys": ["f1"], "command": "git_log_multi_from_sels" },
+	{ "keys": ["alt+f1"], "command": "git_log_multi_from_lines" },
 	{ "keys": ["shift+f1"], "command": "git_graph" },
 	{ "keys": ["ctrl+f1"], "command": "git_graph_all" },
-	{ "keys": ["ctrl+shift+f1"], "command": "git_log_block" },	
+	{ "keys": ["ctrl+shift+f1"], "command": "git_log_as_one_diff" },	
 
 	{ "keys": ["f8"], "command": "git_diff_all" },
 	{ "keys": ["shift+f8"], "command": "git_diff" },
@@ -25,7 +26,7 @@
 	{ "keys": ["ctrl+f7"], "command": "git_commit" },
 	{ "keys": ["alt+f7"], "command": "git_commit_amend" },
 
-	{ "keys": ["f6"], "command": "git_fetch" },
-	{ "keys": ["alt+f6"], "command": "git_pull_rebase" },
-	{ "keys": ["ctrl+f6"], "command": "git_push" }
+	{ "keys": ["f6"], "command": "git_raw", "args": { "command": "git fetch", "may_change_files": false } },
+	{ "keys": ["alt+f6"], "command": "git_raw", "args": { "command": "git pull --rebase" } },
+	{ "keys": ["ctrl+f6"], "command": "git_raw", "args": { "command": "git push", "may_change_files": false } }
 ]
